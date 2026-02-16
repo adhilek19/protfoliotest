@@ -1,0 +1,68 @@
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    background: var(--bg-color);
+    /* Ensure it sits on the base bg */
+}
+
+.falling-item {
+    position: absolute;
+    top: -50px;
+    color: var(--primary-color);
+    font-size: 2rem;
+    user-select: none;
+    animation: fall linear infinite, colorCycle 8s linear infinite;
+    opacity: 0.2;
+}
+
+/* Ensure icons have proper display */
+.falling-item svg {
+    display: block;
+    width: 1em;
+    height: 1em;
+    filter: drop-shadow(0 0 5px currentColor);
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+@keyframes colorCycle {
+    0% {
+        filter: hue-rotate(0deg);
+        color: #38bdf8;
+        /* Cyan */
+    }
+
+    25% {
+        color: #a855f7;
+        /* Purple */
+    }
+
+    50% {
+        color: #f472b6;
+        /* Pink */
+    }
+
+    75% {
+        color: #38bdf8;
+        /* Back to Cyan-ish */
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+        color: #38bdf8;
+    }
+}
