@@ -1,170 +1,278 @@
 .about {
-    padding: 6rem 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+    background: var(--bg-color);
+    position: relative;
+    overflow: hidden;
 }
 
-.about-content {
+/* Bento Grid */
+.about-bento-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+@media (min-width: 992px) {
+    .about-bento-grid {
+        grid-template-columns: 1.2fr 1fr;
+    }
+}
+
+.bento-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    backdrop-filter: blur(16px);
+    transition: all var(--transition-normal);
+}
+
+.bento-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.bento-bio {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
 }
 
-.about-text-container {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.about-text-container p {
-    margin-bottom: 1.5rem;
-    font-size: 1.15rem;
-    color: #cbd5e1;
-    line-height: 1.8;
-}
-
-.highlight {
+.bio-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     color: var(--primary-color);
+    margin-bottom: 0.75rem;
+}
+
+.bento-bio h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+}
+
+.bento-bio p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+}
+
+.highlight-text {
+    color: #fff;
     font-weight: 600;
 }
 
-.skills-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
+.bio-link {
+    color: var(--primary-color);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 600;
+    transition: color var(--transition-fast);
 }
 
-.skill-category {
-    background: var(--card-bg);
-    padding: 2rem;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.skill-category:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border-color: var(--secondary-color);
-}
-
-.skill-category h3 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: var(--secondary-color);
-    font-size: 1.4rem;
-    position: relative;
-    padding-bottom: 0.5rem;
-}
-
-.skill-category h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 3px;
-    background: var(--primary-color);
-    border-radius: 2px;
-}
-
-.skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.2rem;
-    justify-content: center;
-}
-
-.skill-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: default;
-    transition: transform 0.2s;
-}
-
-.skill-item:hover {
-    transform: scale(1.1);
-}
-
-.icon-box {
-    font-size: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.2rem;
-    transition: color 0.3s ease;
-}
-
-.skill-item span {
-    font-size: 0.9rem;
-    color: #94a3b8;
-    font-weight: 500;
-}
-
-/* Specific colors for icons based on classes I used in JSX - 
-Since I used Tailwind classes but don't have Tailwind, I'll map them here */
-.text-orange-500 {
-    color: #f97316;
-}
-
-.text-blue-500 {
-    color: #3b82f6;
-}
-
-.text-yellow-400 {
-    color: #facc15;
-}
-
-.text-cyan-400 {
-    color: #22d3ee;
-}
-
-.text-purple-500 {
-    color: #a855f7;
-}
-
-.text-white {
+.bio-link:hover {
     color: #fff;
 }
 
-.text-teal-400 {
-    color: #2dd4bf;
+.bio-highlights {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
 }
 
-.text-purple-600 {
-    color: #9333ea;
+.bio-highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.92rem;
+    color: #cbd5e1;
 }
 
-.text-green-500 {
-    color: #22c55e;
+.check-ico {
+    color: #34d399;
+    font-size: 0.95rem;
+    flex-shrink: 0;
 }
 
-.text-green-400 {
-    color: #4ade80;
+/* Principles Cards */
+.bento-principles {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
 }
 
-.text-yellow-500 {
-    color: #eab308;
+.principle-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.6rem;
+    backdrop-filter: blur(16px);
+    transition: all var(--transition-normal);
 }
 
-.text-red-500 {
-    color: #ef4444;
+.principle-card:hover {
+    border-color: var(--border-hover);
+    transform: translateX(4px);
+    background: var(--card-bg-hover);
 }
 
-.text-blue-400 {
-    color: #60a5fa;
+.principle-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
 }
 
-.text-orange-400 {
-    color: #fb923c;
+.principle-card h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.35rem;
 }
 
-@media (max-width: 768px) {
-    .skills-container {
-        grid-template-columns: 1fr;
+.principle-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* Skills Section */
+.skills-bento-section {
+    margin-top: 3rem;
+}
+
+.skills-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 992px) {
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
+
+.skill-group-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    backdrop-filter: blur(16px);
+    transition: all var(--transition-normal);
+}
+
+.skill-group-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.skill-group-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.skill-group-header h4 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.3rem;
+}
+
+.skill-group-header p {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    line-height: 1.4;
+}
+
+.skills-badge-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+}
+
+.skill-badge-item {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.6rem 0.8rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.skill-badge-item:hover {
+    background: rgba(56, 189, 248, 0.08);
+    border-color: rgba(56, 189, 248, 0.25);
+    transform: translateY(-2px);
+}
+
+.skill-icon-wrap {
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.skill-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #e2e8f0;
+}
+
+.skill-level {
+    font-size: 0.68rem;
+    color: var(--text-dim);
+}
+
+/* Icon brand colors */
+.icon-react { color: #22d3ee; }
+.icon-next { color: #fff; }
+.icon-js { color: #facc15; }
+.icon-ts { color: #60a5fa; }
+.icon-tailwind { color: #2dd4bf; }
+.icon-redux { color: #a855f7; }
+.icon-html { color: #f97316; }
+.icon-vite { color: #a855f7; }
+.icon-node { color: #4ade80; }
+.icon-express { color: #e2e8f0; }
+.icon-mongo { color: #34d399; }
+.icon-api { color: #38bdf8; }
+.icon-firebase { color: #fbbf24; }
+.icon-shield { color: #f43f5e; }
+.icon-git { color: #f97316; }
+.icon-postman { color: #fb923c; }
+.icon-bolt { color: #f59e0b; }
+.icon-mobile { color: #38bdf8; }

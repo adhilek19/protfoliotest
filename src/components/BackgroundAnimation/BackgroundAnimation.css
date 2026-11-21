@@ -1,68 +1,73 @@
-.background-animation {
+.ambient-background {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
     pointer-events: none;
-    background: var(--bg-color);
-    /* Ensure it sits on the base bg */
+    z-index: 0;
+    overflow: hidden;
 }
 
-.falling-item {
+.ambient-orb {
     position: absolute;
-    top: -50px;
-    color: var(--primary-color);
-    font-size: 2rem;
-    user-select: none;
-    animation: fall linear infinite, colorCycle 8s linear infinite;
-    opacity: 0.2;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.12;
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
 }
 
-/* Ensure icons have proper display */
-.falling-item svg {
-    display: block;
-    width: 1em;
-    height: 1em;
-    filter: drop-shadow(0 0 5px currentColor);
+.orb-1 {
+    width: 600px;
+    height: 600px;
+    background: #0284c7;
+    top: -100px;
+    right: -100px;
+    animation: floatOrb1 18s ease-in-out infinite alternate;
 }
 
-@keyframes fall {
-    0% {
-        transform: translateY(-100px) rotate(0deg);
-    }
-
-    100% {
-        transform: translateY(110vh) rotate(360deg);
-    }
+.orb-2 {
+    width: 500px;
+    height: 500px;
+    background: #6366f1;
+    bottom: -100px;
+    left: -100px;
+    animation: floatOrb2 22s ease-in-out infinite alternate;
 }
 
-@keyframes colorCycle {
-    0% {
-        filter: hue-rotate(0deg);
-        color: #38bdf8;
-        /* Cyan */
-    }
+.orb-3 {
+    width: 400px;
+    height: 400px;
+    background: #10b981;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    opacity: 0.06;
+    animation: pulseOrb3 15s ease-in-out infinite alternate;
+}
 
-    25% {
-        color: #a855f7;
-        /* Purple */
-    }
+@keyframes floatOrb1 {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(-80px, 80px, 0) scale(1.15); }
+}
 
-    50% {
-        color: #f472b6;
-        /* Pink */
-    }
+@keyframes floatOrb2 {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(80px, -80px, 0) scale(1.1); }
+}
 
-    75% {
-        color: #38bdf8;
-        /* Back to Cyan-ish */
-    }
+@keyframes pulseOrb3 {
+    0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.04; }
+    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.08; }
+}
 
-    100% {
-        filter: hue-rotate(360deg);
-        color: #38bdf8;
-    }
+.grid-pattern-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.8) 0%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.8) 0%, transparent 80%);
+    opacity: 0.45;
 }

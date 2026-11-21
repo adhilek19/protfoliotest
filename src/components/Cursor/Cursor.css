@@ -5,43 +5,44 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 9999;
+    z-index: 99999;
 }
 
 .custom-cursor-dot {
     position: fixed;
-    top: -6px;
-    left: -6px;
-    width: 12px;
-    height: 12px;
-    background-color: var(--primary-color);
+    top: -5px;
+    left: -5px;
+    width: 10px;
+    height: 10px;
+    background: #38bdf8;
     border-radius: 50%;
-    box-shadow: 0 0 15px var(--primary-color);
-    z-index: 10000;
+    box-shadow: 0 0 12px #38bdf8, 0 0 24px rgba(56, 189, 248, 0.4);
     mix-blend-mode: screen;
+    pointer-events: none;
+    will-change: transform;
 }
 
 .custom-cursor-dot.hover {
-    background-color: var(--accent-color);
-    box-shadow: 0 0 20px var(--accent-color);
+    background: #f43f5e;
+    box-shadow: 0 0 15px #f43f5e, 0 0 30px rgba(244, 63, 94, 0.5);
 }
 
 .code-particle {
     position: absolute;
     top: 0;
     left: 0;
-    color: var(--primary-color);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.8rem;
-    font-weight: bold;
+    color: #38bdf8;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
     pointer-events: none;
     white-space: nowrap;
-    opacity: 0.8;
-    text-shadow: 0 0 5px rgba(56, 189, 248, 0.5);
+    text-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+    will-change: transform, opacity;
 }
 
-@media (max-width: 768px) {
+@media (pointer: coarse) {
     .cursor-container {
-        display: none;
+        display: none !important;
     }
 }
